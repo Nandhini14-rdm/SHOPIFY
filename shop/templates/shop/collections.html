@@ -1,0 +1,66 @@
+{% extends 'shop/layouts/main.html' %} {% block title %} Collections | Shopify
+{% endblock title %} {% block content %}
+
+<section class="py-5 text-center container" style="margin-top: 70px">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">BestSellers</h1>
+      <p class="lead text-muted">Our Most Popular products on sales</p>
+      <p>
+        <a href="{% url 'login' %}" class="btn btn-primary my-2"
+          >Already a User</a
+        >
+        <a href="{% url 'register' %}" class="btn btn-secondary my-2"
+          >Register</a
+        >
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-4 my-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col-12">
+        <h4 class="mb-3">Categories</h4>
+        <hr style="border-color: azure" />
+        {% include 'shop/inc/message.html' %}
+      </div>
+
+      {% for item in category %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card my-3 h-100 d-flex flex-column">
+          <img
+            src="{{item.image.url}}"
+            alt="Categories"
+            class="card-img-top card-image-style"
+          />
+          <a href="{% url 'collections' item.name%}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-primary">{{item.name}}</h5>
+              <p
+                class="card-text text-truncate"
+                style="max-height: 60px; overflow: hidden"
+              >
+                {{item.description}}
+              </p>
+              <a
+                href="#"
+                class="text-primary"
+                data-bs-toggle="collapse"
+                data-bs-target="#desc-{{forloop.counter}}"
+                >Read More</a
+              >
+              <div id="desc-{{forloop.counter}}" class="collapse">
+                {{item.description}}
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

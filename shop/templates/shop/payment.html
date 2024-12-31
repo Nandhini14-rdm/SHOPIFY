@@ -1,0 +1,34 @@
+{% extends 'shop/layouts/main.html' %} 
+{% block title %} 
+Collections | Shopify
+{% endblock title %} 
+
+{% block content %}
+
+
+<section class="bg-light py-4 my-5" style="min-height: 550px">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Payment for {{ product.name }}</h3>
+                <p class="card-text">Price: Rs.{{ product.selling_price }}</p>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="total_cost" class="form-label">Total Amount</label>
+                        <input type="text" class="form-control" id="total_cost" name="total_cost" value="${{ product.selling_price }}" readonly>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg">Proceed to Payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

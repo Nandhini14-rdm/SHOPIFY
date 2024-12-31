@@ -1,0 +1,24 @@
+{% extends 'shop/layouts/main.html' %} 
+{% block title %} 
+Collections | Shopify
+{% endblock title %} 
+
+{% block content %}
+
+
+<section class="bg-light py-4 my-5 box_style" style="min-height: 550px">
+    <div class="container text-center">
+        <div class="card shadow-lg p-5 rounded-4">
+          <div class="mb-4">
+            <i class="fa fa-xmark text-success display-1"></i>
+          </div>
+          <h1 class="mb-3 text-success">OOPS!</h1>
+          <p class="lead">
+            Product is Sold Out!
+        <br>
+            We will notify you when the product arrives !!</p>
+          <a href="/" class="btn btn-primary mt-3">Return to Home</a>
+        </div>
+      </div>
+</section>
+{% endblock content %}
